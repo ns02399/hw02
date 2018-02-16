@@ -19,7 +19,7 @@
 \usepackage[table]{xcolor}
 \usepackage{amsfonts,graphicx,amsmath,hyperref}
 \title{Habib University\\CS-113 Discrete Mathematics\\Spring 2018\\HW 2}
-\author{$<your ID>$}  % replace with your ID, e.g. oy02945
+\author{ns02399}  % replace with your ID, e.g. oy02945
 \date{Due: 19h, 16th February, 2018}
 
 
@@ -48,13 +48,18 @@
   \end{center}
 
   \begin{solution}
-    % Write your solution here
+  
+    A partial function isn't defined over some values of the domain so the function $y = \sqrt{x}$ is partial over the domain; $x \in \mathbb{Z}$ and over the co-domain $y \in \mathbb{R}$(positive), since for e.g x = -3 is not mapped to any value in the co-domain.
+    Where as a total function is defined for all domain values so the function $y = \sqrt{x}$ is total for the domain $x \in \mathbb{N}$ and co-domain $y \in \mathbb{R}$(positive), since all natural numbers are mapped to the co-domain.
+    
   \end{solution}
   
   \part[5] Explain whether $f$ is a function from the set of all bit strings to the set of integers if $f(S)$ is the smallest $i \in \mathbb{Z}$� such that the $i$th bit of S is 1 and $f(S) = 0$ when S is the empty string. 
   
   \begin{solution}
-    % Write your solution here
+    
+    A function is one that maps all the values of the domain to at least one value of the co-domain. Since $f$ is undefined for a string consisting of all zeroes.
+    
   \end{solution}
 
   \part[15] For $X,Y \in S$, explain why (or why not) the following define an equivalence relation on $S$:
@@ -65,7 +70,14 @@
   \end{subparts}
 
   \begin{solution}
-    % Write your solution here
+    
+    For a set to have an equivalence relation, it must also be reflexive, symmetric, and transitive.\\ \\
+    i. If A is in class with B and B is in a different class with C then A and B are not in the same class together. Transitive property is not met so this is not an equivalence relation.\\ \\
+    ii. This is an equivalence relation because it is reflexive as every word rhymes with itself and symmetric because if A rhymes with B then B also rhymes with A and transitive because if A rhymes with B and B rhymes with C then A must also rhyme with C.\\ \\
+    iii. Since the symmetric property isn't met, this isn't an equivalence relation as it's not necessary for B to be a subset of A if A is a subset of B. consider the sets;
+    A = {1,2,3}
+    B = {1,2,3,4}
+    
   \end{solution}
 
 \end{parts}
@@ -73,7 +85,9 @@
 %Long questions (75)
 \question[15] Let $A = f^{-1}(B)$. Prove that $f(A) \subseteq B$.
   \begin{solution}
-    % Write your solution here
+    
+    Taking inverse on both sides of the equation gives us $f(A) = B$. Because of the law of equality if A is a subset and equal to B then B should also be a subset of and equal to A. Considering a, b, and c to be elements of A that map to elements of B; 10, 11, and 12 through $f$ respectively. It is observable that $f(A) = 10, 11, 12$ is a subset of B and also equal to B.
+    
   \end{solution}
 
 \question[15] Consider $[n] = \{1,2,3,...,n\}$ where $n \in \mathbb{N}$. Let $A$ be the set of subsets of $[n]$ that have even size, and let $B$ be the set of subsets of $[n]$ that have odd size. Establish a bijection from $A$ to $B$, thereby proving $|A| = |B|$. (Such a bijection is suggested below for $n = 3$) 
@@ -88,7 +102,11 @@
 \end{center}
 
   \begin{solution}
-    % Write your solution here
+    
+Defining $f$ by the rule $f(A) = x - \{1\} $ if $\{1\} \in A$ or $f(A) = x  \cup \{1\}$ if $\{1\} \notin A$.\\
+Assuming $A_1$ and $A_2$ to be two subsets of A. If \{1\} \in $A_1$, then \{1\} \notin $f(A_1)$.\\
+Consecutively \{1\} \notin  $f(A_2)$ so \{1\} \in $A_2$.\\
+Concluding that $A_1$ = $A_2$, means that $f$ is injective. Similarly if $\{1\} \in B$ then $B - \{1\}$ should map to B by the defined function. Similarly if $\{1\} \notin B$ then $B \cup \{1\}$ should map to B, Concluding that all image elements are mapped to the the domain elements makes the function surjective.
   \end{solution}
   
 \question Mushrooms play a vital role in the biosphere of our planet. They also have recreational uses, such as in understanding the mathematical series below. A mushroom number, $M_n$, is a figurate number that can be represented in the form of a mushroom shaped grid of points, such that the number of points is the mushroom number. A mushroom consists of a stem and cap, while its height is the combined height of the two parts. Here is $M_5=23$:
@@ -121,11 +139,26 @@ Study the first five mushrooms carefully and make sure you can draw subsequent o
   \begin{parts}
     \part[15] Derive a closed-form for $M_n$ in terms of $n$.
   \begin{solution}
-    % Write your solution here
+    
+    The Row of dots directly above the stem can be represented as always having $n + 1$ dots.\\ \\
+    The Stem itself can be represented as always having 2(n-1) dots in 2 columns.\\ \\
+    The rest of the cap (excluding the base of the cap is a bit tricky. The number of rows (X) in the cap but above the cap base can be represented as $X = [n//2]$.\\
+    Because each row contains 1 dot less than the dots in the row below itself, these can be represented as $X(n + 1) - X((X+1)/2)$ dots.\\ \\
+    To calculate total dots we just have to sum the three expressions which will give us:\\
+    $2(n-1) + (n+1) + (n+1)(X) - X((X+1)/2)$.\\
+    $M_n$ comes out be:\\
+    $(n+1)(n//2 + 1) - [(n//2)(n//2) + 1]/2 + 2(n-1)$
+    
   \end{solution}
     \part[5] What is the total height of the $20$th mushroom in the series? 
   \begin{solution}
-    % Write your solution here
+    
+    Stem = $n - 1$.\\
+    Cap = Height of Remaining Cap $+ 1$ = $(n//2) + 1$.\\
+    Total Height = Stem + Cap\\
+    = $n + (n/2)$.\\ \\
+    So the height of 20th mushroom = $20 + 10 = 30$
+    
   \end{solution}
 \end{parts}
 
@@ -153,7 +186,11 @@ The \href{http://www.maths.surrey.ac.uk/hosted-sites/R.Knott/Fibonacci/fibGen.ht
   \part[10] To begin, prove that the Fibonacci series is countable.
  
     \begin{solution}
-    % Write your solution here
+    
+    A countable set is one that has a one to one correspondence with natural numbers \mathbb{N}.\\
+    So any set that has a bijection with the set of Natural Numbers is called countably infinite.\\
+    Because the fibonacci sequence can be mapped to natural numbers bijectively. So we can say that the fibonacci series is countable.
+    
   \end{solution}
   \part[15] Consider the Modified Wythoff as any array derived from the original, where each entry of the leading diagonal (marked in blue) of the original 2D-Array is replaced with an integer that does not occur in that row. Prove that the Modified Wythoff Array is countable. 
 
